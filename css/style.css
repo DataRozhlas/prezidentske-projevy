@@ -1,3 +1,7 @@
 .speech-blurb {
     font-weight: bold;
 }
+
+#player {
+    width: 100%;
+}

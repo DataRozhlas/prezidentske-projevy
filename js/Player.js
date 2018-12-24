@@ -7,7 +7,7 @@ export function partialPlay(e, timing) {
   }
 
   e.preventDefault();
-  const player = document.getElementById("Player");
+  const player = document.getElementById("player");
   const startTime = toSeconds(timing[0]);
   const duration = parseInt((toSeconds(timing[1]) - toSeconds(timing[0])) * 1000, 10);
 
@@ -19,8 +19,15 @@ export function partialPlay(e, timing) {
   duration);
 
   // timeout so the seeking event doesn't fire immediately
+  // required for IE which doesn't pause when seeking, screw you IE
+  setTimeout(() => {
+    player.onseeking = () => {
+      clearTimeout(playerTimeout);
+    };
+  },
+  500);
+
   player.onpause = () => {
-    console.log("fired!")
     clearTimeout(playerTimeout);
   };
 }
@@ -58,7 +65,7 @@ export class Player extends Component {
   render() {
     const { url } = this.state;
     return (
-      <audio controls id="Player" ref={(elem) => { this.player = elem; }}>
+      <audio controls id="player" ref={(elem) => { this.player = elem; }}>
         <source src={url} type="audio/mpeg" />
       </audio>
     );

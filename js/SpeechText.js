@@ -20,6 +20,15 @@ async function getSpeech(name) {
 }
 
 function processParagraph(paragraph) {
+  // IE polyfill
+  if (!String.prototype.startsWith) {
+    // eslint-disable-next-line no-extend-native
+    String.prototype.startsWith = function Polyfill(searchString, position) {
+      const newPosition = position || 0;
+      return this.indexOf(searchString, position) === newPosition;
+    };
+  }
+
   const paragraphArray = [];
   let isNextSpan = 0;
   let start;
