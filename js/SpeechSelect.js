@@ -17,8 +17,8 @@ export class SpeechSelect extends Component {
     const { speechID } = this.props;
     return (
       <fieldset>
-        <select onChange={this.handleChange} value={speechID}>
-          {speechMeta.speechList.map(el => <option value={el}>{el.replace("-", " – ")}</option>)}
+        <select id="speech-select" onChange={this.handleChange} value={speechID}>
+          {speechMeta.speechList.map(el => <option value={el}>{`${el.split("-")[0]} – ${speechMeta.presidents[el.split("-")[1]].name}`}</option>)}
         </select>
       </fieldset>
     );

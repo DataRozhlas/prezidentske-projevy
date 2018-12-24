@@ -2,6 +2,6 @@
     font-weight: bold;
 }
 
-#player {
+#player, #speech-select {
     width: 100%;
 }
