@@ -1,4 +1,5 @@
 import { h, Component } from "preact";
+import { speechMeta } from "./speechMeta";
 /** @jsx h */
 
 function xhrSpeech(name) {
@@ -22,19 +23,45 @@ async function getSpeech(name) {
 export class SpeechText extends Component {
   constructor(props) {
     super(props);
-    this.state = { blurb: "", content: [] };
+    this.state = { blurb: "", content: [], header: "" };
   }
 
   componentDidMount() {
-    const { year } = this.props;
-    getSpeech(`${year}-Zeman.txt`)
-      .then(text => this.setState({ blurb: text[0], content: text.slice(1) }));
+    const { speechID } = this.props;
+    getSpeech(`${speechID}.txt`)
+      .then(text => this.setState({
+        blurb: text[0],
+        content: text.slice(1),
+        header: this.generateHeaderText(),
+      }));
+  }
+
+  componentDidUpdate(prevProps) {
+    const { speechID } = this.props;
+    if (speechID !== prevProps.speechID) {
+      getSpeech(`${speechID}.txt`)
+        .then(text => this.setState({
+          blurb: text[0],
+          content: text.slice(1),
+          header: this.generateHeaderText(),
+        }));
+    }
+  }
+
+  generateHeaderText() {
+    const { speechID } = this.props;
+    const year = speechID.split("-")[0];
+    const { name } = speechMeta.presidents[speechID.split("-")[1]];
+    return `${year}: ${name}`;
   }
 
   render() {
-    const { blurb, content } = this.state;
+    const { blurb, content, header } = this.state;
     return (
       <div className="speech">
+        <h1 className="speech-header">
+          {header}
+        </h1>
         <div className="speech-blurb">
           {blurb}
         </div>
