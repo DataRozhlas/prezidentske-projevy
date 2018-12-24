@@ -1,6 +1,30 @@
 import { h, Component } from "preact";
 /** @jsx h */
 
+export function partialPlay(e, timing) {
+  function toSeconds(time) {
+    return parseInt(time.split(":")[0], 10) * 60 + parseFloat(time.split(":")[1]);
+  }
+
+  e.preventDefault();
+  const player = document.getElementById("Player");
+  const startTime = toSeconds(timing[0]);
+  const duration = parseInt((toSeconds(timing[1]) - toSeconds(timing[0])) * 1000, 10);
+
+  player.currentTime = startTime;
+  player.play();
+  const playerTimeout = setTimeout(() => {
+    player.pause();
+  },
+  duration);
+
+  // timeout so the seeking event doesn't fire immediately
+  player.onpause = () => {
+    console.log("fired!")
+    clearTimeout(playerTimeout);
+  };
+}
+
 export class Player extends Component {
   constructor(props) {
     super(props);
@@ -34,7 +58,7 @@ export class Player extends Component {
   render() {
     const { url } = this.state;
     return (
-      <audio controls ref={(elem) => { this.player = elem; }}>
+      <audio controls id="Player" ref={(elem) => { this.player = elem; }}>
         <source src={url} type="audio/mpeg" />
       </audio>
     );

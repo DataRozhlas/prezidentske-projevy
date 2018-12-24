@@ -1,5 +1,6 @@
 import { h, Component } from "preact";
 import { speechMeta } from "./speechMeta";
+import { partialPlay } from "./Player";
 /** @jsx h */
 
 function xhrSpeech(name) {
@@ -14,10 +15,37 @@ function xhrSpeech(name) {
 }
 
 async function getSpeech(name) {
-  let speech = await xhrSpeech(name);
-  speech = speech.replace(/<span data(.*?)<\/span/g, "<a href='#' data$1</a");
-
+  const speech = await xhrSpeech(name);
   return speech.split("\n").filter(paragraph => paragraph.length > 0);
+}
+
+function processParagraph(paragraph) {
+  const paragraphArray = [];
+  let isNextSpan = 0;
+  let start;
+  let end;
+  paragraph
+    .split(/(<span.+?>|<\/span>)+/g)
+    .filter(snippet => snippet.trim().length > 0)
+    .forEach((snippet) => {
+      if (!isNextSpan) {
+        if (snippet.startsWith("<span")) {
+          const spanRegex = /".*?"/g;
+          start = spanRegex.exec(snippet)[0].replace(/"/g, "");
+          end = spanRegex.exec(snippet)[0].replace(/"/g, "");
+          isNextSpan = 1;
+        } else {
+          paragraphArray.push({ content: snippet, isSpan: false });
+        }
+      } else if (isNextSpan) {
+        if (snippet.startsWith("</span")) {
+          isNextSpan = 0;
+        } else {
+          paragraphArray.push({ content: snippet, isSpan: true, timing: [start, end] });
+        }
+      }
+    });
+  return paragraphArray;
 }
 
 export class SpeechText extends Component {
@@ -67,8 +95,18 @@ export class SpeechText extends Component {
         </div>
         <div className="speech-content">
           {content.map(paragraph => (
-            // eslint-disable-next-line react/no-danger
-            <p className="speech-paragraph" dangerouslySetInnerHTML={{ __html: paragraph }} />
+            <p className="speech-paragraph">
+              {processParagraph(paragraph).map((snippet) => {
+                if (!snippet.isSpan) {
+                  return snippet.content;
+                }
+                return (
+                  <a href="#" onClick={e => partialPlay(e, snippet.timing)}>
+                    {snippet.content}
+                  </a>
+                );
+              })}
+            </p>
           ))}
         </div>
       </div>
