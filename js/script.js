@@ -11,22 +11,28 @@ class Calendar extends Component {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
+    this.handlePlayState = this.handlePlayState.bind(this);
     this.state = {
       speechID: speechMeta.speechList[speechMeta.speechList.length - 1],
+      playing: 0,
     };
   }
-
+  
   handleChange(speechID) {
     this.setState({ speechID });
   }
 
+  handlePlayState(playing) {
+    this.setState({ playing });
+  }
+
   render() {
-    const { speechID } = this.state;
+    const { speechID, playing } = this.state;
     return (
       <div>
-        <Player speechID={speechID} />
         <SpeechSelect speechID={speechID} onChange={this.handleChange} />
-        <SpeechText speechID={speechID} />
+        <SpeechText speechID={speechID} playing={playing} />
+        <Player speechID={speechID} playing={this.handlePlayState} />
       </div>
     );
   }

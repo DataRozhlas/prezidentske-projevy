@@ -12,3 +12,20 @@
     right: 0;
     width: 100%
 }
+
+.button {
+    cursor: pointer;
+    float: right;
+    margin-left: 20px;
+    line-height: 80px;
+    height: 80px;
+    width: 80px;
+}
+
+.button-play {
+    font-size: 80px;
+}
+
+.button-pause {
+    font-size: 40px;
+}

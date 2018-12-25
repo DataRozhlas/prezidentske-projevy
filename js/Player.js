@@ -32,15 +32,44 @@ export function partialPlay(e, timing) {
   };
 }
 
+function handlePlayerButton(e, playing) {
+  const player = document.getElementById("player");
+  if (playing) {
+    player.pause();
+  } else {
+    player.play();
+  }
+}
+
+export function PlayerButton(props) {
+  const { playing } = props;
+  const symbol = playing
+    ? <span className="button-pause">▌▌</span>
+    : <span className="button-play">▶</span>;
+  return (
+    <div className="button" onClick={e => handlePlayerButton(e, playing)}>
+      {symbol}
+    </div>
+  );
+}
+
 export class Player extends Component {
   constructor(props) {
     super(props);
     this.state = { url: "" };
+    this.handlePlayState = this.handlePlayState.bind(this);
   }
 
   componentDidMount() {
     const { speechID } = this.props;
+    const component = this.player;
     this.setState({ url: `https://samizdat.blob.core.windows.net/projevy/${speechID.toLowerCase()}.mp3` });
+    component.addEventListener("play", () => {
+      this.handlePlayState(1);
+    });
+    component.addEventListener("pause", () => {
+      this.handlePlayState(0);
+    });
   }
 
   componentDidUpdate(prevProps) {
@@ -62,10 +91,15 @@ export class Player extends Component {
     );
   }
 
+  handlePlayState(isPlaying) {
+    const { playing } = this.props;
+    playing(isPlaying);
+  }
+
   render() {
     const { url } = this.state;
     return (
-      <audio controls id="player" ref={(elem) => { this.player = elem; }}>
+      <audio playing={this.handlePlayState} controls id="player" ref={(elem) => { this.player = elem; }}>
         <source src={url} type="audio/mpeg" />
       </audio>
     );

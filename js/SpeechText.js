@@ -1,6 +1,6 @@
 import { h, Component } from "preact";
 import { speechMeta } from "./speechMeta";
-import { partialPlay } from "./Player";
+import { partialPlay, PlayerButton } from "./Player";
 /** @jsx h */
 
 function xhrSpeech(name) {
@@ -94,8 +94,10 @@ export class SpeechText extends Component {
 
   render() {
     const { blurb, content, header } = this.state;
+    const { playing } = this.props; 
     return (
       <div className="speech">
+        <PlayerButton playing={playing} />
         <h1 className="speech-header">
           {header}
         </h1>
