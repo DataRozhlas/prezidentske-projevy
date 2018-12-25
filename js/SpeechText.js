@@ -94,7 +94,7 @@ export class SpeechText extends Component {
 
   render() {
     const { blurb, content, header } = this.state;
-    const { playing } = this.props; 
+    const { playing } = this.props;
     return (
       <div className="speech">
         <PlayerButton playing={playing} />

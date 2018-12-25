@@ -17,7 +17,7 @@ class Calendar extends Component {
       playing: 0,
     };
   }
-  
+
   handleChange(speechID) {
     this.setState({ speechID });
   }
