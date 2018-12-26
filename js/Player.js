@@ -45,7 +45,7 @@ export function PlayerButton(props) {
   const { playing } = props;
   const symbol = playing
     ? <span className="button-pause">▌▌</span>
-    : <span className="button-play">▶</span>;
+    : <span className="button-play" />;
   return (
     <div className="button" onClick={e => handlePlayerButton(e, playing)}>
       {symbol}
