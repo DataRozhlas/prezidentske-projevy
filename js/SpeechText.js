@@ -92,15 +92,31 @@ export class SpeechText extends Component {
     return `${year}: ${name}`;
   }
 
+  isSoundAvaliableCheck() {
+    const { speechID, playing } = this.props;
+    if (!speechMeta.notAvailable.includes(speechID)) {
+      return <PlayerButton playing={playing} />;
+    }
+    return "";
+  }
+
+  notAvailableMsg() {
+    const { speechID } = this.props;
+    if (speechMeta.notAvailable.includes(speechID)) {
+      return <p className="not-available">Nahrávka projevu bohužel není k dispozici.</p>;
+    }
+    return "";
+  }
+
   render() {
     const { blurb, content, header } = this.state;
-    const { playing, speechID } = this.props;
+    const { speechID } = this.props;
     const imgLink = `https://data.irozhlas.cz/prezidentske-projevy/data/${speechID.split("-")[1].toLowerCase()}.jpg`;
     return (
       <div className="speech">
         <div className="sidebar">
           <img className="speech-img" alt="" src={imgLink} />
-          <PlayerButton playing={playing} />
+          {this.isSoundAvaliableCheck()}
         </div>
         <h1 className="speech-header">
           {header}
@@ -108,6 +124,7 @@ export class SpeechText extends Component {
         <div className="speech-blurb">
           {`„${blurb}“`}
         </div>
+        {this.notAvailableMsg()}
         <div className="speech-content">
           {content.map(paragraph => (
             <p className="speech-paragraph">

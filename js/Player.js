@@ -1,4 +1,5 @@
 import { h, Component } from "preact";
+import { speechMeta } from "./speechMeta";
 /** @jsx h */
 
 export function partialPlay(e, timing) {
@@ -82,13 +83,17 @@ export class Player extends Component {
   updatePlayer() {
     const { speechID } = this.props;
     const component = this.player;
-    this.setState(
-      { url: `https://samizdat.blob.core.windows.net/projevy/${speechID.toLowerCase()}.mp3` },
-      () => {
-        component.pause();
-        component.load();
-      },
-    );
+    if (!speechMeta.notAvailable.includes(speechID)) {
+      this.setState(
+        { url: `https://samizdat.blob.core.windows.net/projevy/${speechID.toLowerCase()}.mp3` },
+        () => {
+          component.pause();
+          component.load();
+        },
+      );
+    } else {
+      component.pause();
+    }
   }
 
   handlePlayState(isPlaying) {
