@@ -95,7 +95,7 @@ export class SpeechText extends Component {
   render() {
     const { blurb, content, header } = this.state;
     const { playing, speechID } = this.props;
-    const imgLink = `https://data.irozhlas.cz/prezidentske-projevy/data/${speechID.split("-")[1]}.jpg`;
+    const imgLink = `https://data.irozhlas.cz/prezidentske-projevy/data/${speechID.split("-")[1].toLowerCase()}.jpg`;
     return (
       <div className="speech">
         <div className="sidebar">
@@ -106,7 +106,7 @@ export class SpeechText extends Component {
           {header}
         </h1>
         <div className="speech-blurb">
-          {blurb}
+          {`„${blurb}“`}
         </div>
         <div className="speech-content">
           {content.map(paragraph => (

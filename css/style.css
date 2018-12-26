@@ -1,5 +1,13 @@
+.speech-header {
+    font-family: sans-serif;
+    font-size: 2em;
+}
+
 .speech-blurb {
-    font-weight: bold;
+    font-family: sans-serif;
+    font-size: 1.3em;
+    font-style: italic;
+    margin-bottom: 1em;
 }
 
 #speech-select {
@@ -49,7 +57,31 @@
 }
 
 @media only screen and (max-width: 600px) {
+    .speech-blurb {
+        font-size: 1.1em;
+    }
+
     .sidebar {
         width: 100px;
+        margin-left: 10px;
+        padding-bottom: 50px;
+    }
+
+    .speech-img {
+        width: 120px;
+    }
+
+    .button {
+        line-height: 60px;
+        height: 60px;
+        width: 60px;
+    }
+    
+    .button-play {
+        font-size: 60px;
+    }
+    
+    .button-pause {
+        font-size: 30px;
     }
 }
