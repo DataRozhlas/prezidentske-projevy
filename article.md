@@ -1,5 +1,5 @@
-title: "Od TGM k Zemanovi: Poslechněte si vánoční projevy všech prezidentů"
-perex: "Perex perex"
+title: "Od Společnosti národů k lepšolidem. Poslechněte si prezidentské vánoční projevy od roku 1935 dodnes"
+perex: "Prezident Miloš Zeman pronesl nejdelší prezidentský vánoční projev od roku 1996. Poslechněte si ho spolu s projevy všech československých a českých prezidentů od T. G. Masaryka."
 published: "26. prosince 2018"
 coverimg: https://data.irozhlas.cz/prezidentske-projevy/data/cover.jpg
 coverimg_note: "Foto <a href='#'>ČTK</a>"
