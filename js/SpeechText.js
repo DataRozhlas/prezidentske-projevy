@@ -94,10 +94,14 @@ export class SpeechText extends Component {
 
   render() {
     const { blurb, content, header } = this.state;
-    const { playing } = this.props;
+    const { playing, speechID } = this.props;
+    const imgLink = `https://data.irozhlas.cz/prezidentske-projevy/data/${speechID.split("-")[1]}.jpg`;
     return (
       <div className="speech">
-        <PlayerButton playing={playing} />
+        <div className="sidebar">
+          <img className="speech-img" alt="" src={imgLink} />
+          <PlayerButton playing={playing} />
+        </div>
         <h1 className="speech-header">
           {header}
         </h1>

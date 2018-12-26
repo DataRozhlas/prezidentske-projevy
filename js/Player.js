@@ -63,7 +63,7 @@ export class Player extends Component {
   componentDidMount() {
     const { speechID } = this.props;
     const component = this.player;
-    this.setState({ url: `https://samizdat.blob.core.windows.net/projevy/${speechID.toLowerCase()}.mp3` });
+    this.setState({ url: `https://s3.eu-central-1.amazonaws.com/datarozhlas/projevy-zvuky/${speechID.toLowerCase()}.mp3` });
     component.addEventListener("play", () => {
       this.handlePlayState(1);
     });

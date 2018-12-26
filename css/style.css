@@ -15,7 +15,6 @@
 
 .button {
     cursor: pointer;
-    float: right;
     margin-left: 20px;
     line-height: 80px;
     height: 80px;
@@ -33,4 +32,24 @@
 #projevy-footer {
     font-size: small;
     color: #999;
+}
+
+.sidebar {
+    float: right;
+    display: flex;
+    width: 200px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.speech-img {
+    border-radius: 50%;
+    width: 200px;
+}
+
+@media only screen and (max-width: 600px) {
+    .sidebar {
+        width: 100px;
+    }
 }
