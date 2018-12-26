@@ -88,11 +88,13 @@ export class Player extends Component {
         { url: `https://samizdat.blob.core.windows.net/projevy/${speechID.toLowerCase()}.mp3` },
         () => {
           component.pause();
+          this.handlePlayState(0);
           component.load();
         },
       );
     } else {
       component.pause();
+      this.handlePlayState(0);
     }
   }
 
