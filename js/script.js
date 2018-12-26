@@ -1,5 +1,6 @@
 import "./targetblank"; // pro otvírání odkazů v novém okně
 import "promise-polyfill/src/polyfill";
+import "./arrayIncludesPolyfill";
 import { h, render, Component } from "preact";
 import { SpeechText } from "./SpeechText";
 import { SpeechSelect } from "./SpeechSelect";
