@@ -38,7 +38,7 @@ function processParagraph(paragraph) {
     .filter(snippet => snippet.trim().length > 0)
     .forEach((snippet) => {
       if (!isNextSpan) {
-        if (snippet.startsWith("<span")) {
+        if (snippet.startsWith("<span ")) {
           const spanRegex = /".*?"/g;
           start = spanRegex.exec(snippet)[0].replace(/"/g, "");
           end = spanRegex.exec(snippet)[0].replace(/"/g, "");
@@ -113,7 +113,10 @@ export class SpeechText extends Component {
             <p className="speech-paragraph">
               {processParagraph(paragraph).map((snippet) => {
                 if (!snippet.isSpan) {
-                  return snippet.content;
+                  return (
+                    // eslint-disable-next-line react/no-danger
+                    <span dangerouslySetInnerHTML={{ __html: snippet.content }} />
+                  );
                 }
                 return (
                   <a href="#" onClick={e => partialPlay(e, snippet.timing)}>
