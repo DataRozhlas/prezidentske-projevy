@@ -5,9 +5,9 @@ coverimg: https://data.irozhlas.cz/prezidentske-projevy/data/cover.jpg
 coverimg_note: ""
 styles: []
 libraries: [] #jquery, d3, highcharts, datatables
-options: [] #wide, noheader (, nopic)
+options: [noheader, nopic] #wide, noheader (, nopic)
 ---
-<div id="projevy-app"></div> 
+<div id="projevy-app"></div>
 <hr>
 <div id="projevy-footer">
 Pro iROZHLAS.cz zpracovali Jan Boček, Jan Cibulka, Petr Kočí, Marcel Šulek a Michal Zlatkovský.
