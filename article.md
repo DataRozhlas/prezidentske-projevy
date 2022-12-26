@@ -1,5 +1,5 @@
 title: "TGM vzpomínal na dětství, Zeman na politickou kariéru. Vánoční a novoroční projevy 1935 - 2022 zvukem i textem"
-perex: "Prezident Miloš Zeman pronesl svůj poslední vánoční projev. Poslechněte si ho spolu s projevy všech československých a českých prezidentů od dob T. G. Masaryka."
+perex: "Prezident Miloš Zeman pronesl svůj poslední vánoční projev. Poslechněte si ho spolu s projevy všech československých a českých prezidentů od dob T. G. Masaryka. Většina projevů v časové řadě byla novoroční, proto zachováváme toto číslování a poslední Zemanova řeč je označená letopočtem 2023."
 published: "26. prosince 2022"
 coverimg: https://data.irozhlas.cz/prezidentske-projevy/data/cover.jpg
 coverimg_note: ""
