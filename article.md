@@ -1,6 +1,6 @@
-title: "Od Společnosti národů k ‚lepšolidem‘. Poslechněte si prezidentské vánoční projevy od roku 1935 dodnes"
-perex: "Prezident Miloš Zeman pronesl nejdelší prezidentský vánoční projev od roku 1996. Poslechněte si ho spolu s projevy všech československých a českých prezidentů od dob T. G. Masaryka."
-published: "26. prosince 2018"
+title: "TGM vzpomínal na dětství, Zeman na politickou kariéru. Vánoční a novoroční projevy 1935 - 2022 zvukem i textem"
+perex: "Prezident Miloš Zeman pronesl svůj poslední vánoční projev. Poslechněte si ho spolu s projevy všech československých a českých prezidentů od dob T. G. Masaryka."
+published: "26. prosince 2022"
 coverimg: https://data.irozhlas.cz/prezidentske-projevy/data/cover.jpg
 coverimg_note: ""
 styles: []

@@ -94,6 +94,7 @@ export const speechMeta = {
     "2020-Zeman",
     "2021-Zeman",
     "2022-Zeman",
+    "2023-Zeman",
   ],
   notAvailable: [
     "1936-Benes",
