@@ -14,7 +14,7 @@ class Calendar extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handlePlayState = this.handlePlayState.bind(this);
     this.state = {
-      speechID: speechMeta.speechList[speechMeta.speechList.length - 1],
+      speechID: speechMeta.speechList[0],
       playing: 0,
     };
   }
